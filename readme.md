@@ -5,7 +5,7 @@
 A simple neural network for recognizing handwritten digits implemented in Java.
 This repository is based on the online book [Neural Networks and Deep Learning][book] by [Michael Nielsen][michael_nielsen].
 For training the network the [MNIST dataset][mnist_dataset] is used. 
-Unfortunately the link to the original dataset http://yann.lecun.com/exdb/mnist/ is broken at the moment.
+Unfortunately the link to the original dataset http://yann.lecun.com/exdb/mnist/ is broken at the moment, but it looks like the dataset can also be found [here][mnist_dataset2].
 
 ## Requirements
 
@@ -20,6 +20,7 @@ Unfortunately the link to the original dataset http://yann.lecun.com/exdb/mnist/
 * Youtube Video: [Sebastian Lague - How to Create a Neural Network (and Train it to Identify Doodles)][sebastian_lague]
 * Youtube Playlist: [3Blue1Brown - Neural networks][3blue1brown]
 * The data set: http://yann.lecun.com/exdb/mnist/ (unfortunately broken at the moment)
+* Alternative link to the [MNIST dataset][mnist_dataset2]
 
 
 
@@ -28,4 +29,5 @@ Unfortunately the link to the original dataset http://yann.lecun.com/exdb/mnist/
 [book]: http://neuralnetworksanddeeplearning.com/chap1.html
 [michael_nielsen]: https://michaelnielsen.org/
 [mnist_dataset]: https://en.wikipedia.org/wiki/MNIST_database
+[mnist_dataset2]: https://github.com/cvdfoundation/mnist
 [sebastian_lague]: https://www.youtube.com/watch?v=hfMk-kjRv4c
