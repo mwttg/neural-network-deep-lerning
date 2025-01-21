@@ -1,0 +1,14 @@
+<configuration debug="false">
+    <!-- disable logback status log -->
+    <statusListener class="ch.qos.logback.core.status.NopStatusListener"/>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %-60logger: %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <root level="debug">
+        <appender-ref ref="STDOUT"/>
+    </root>
+</configuration>
