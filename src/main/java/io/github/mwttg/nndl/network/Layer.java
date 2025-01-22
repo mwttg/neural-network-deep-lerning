@@ -1,6 +1,5 @@
 package io.github.mwttg.nndl.network;
 
-import io.github.mwttg.nndl.network.activation.ActivationFunction;
 import java.util.Random;
 import java.util.stream.DoubleStream;
 
@@ -10,23 +9,25 @@ public class Layer {
   private final int numNeuronsOut;
   private final double[] weights;
   private final double[] biases;
-  private final ActivationFunction activationFunction;
+  private final double[] costs;
+  private final ActivationType activationType;
 
   public Layer(
-      final int numNeuronsIn,
-      final int numNeuronsOut,
-      final ActivationFunction activationFunction) {
+      final int numNeuronsIn, final int numNeuronsOut, final ActivationType activationType) {
     this.numNeuronsIn = numNeuronsIn;
     this.numNeuronsOut = numNeuronsOut;
-    this.activationFunction = activationFunction;
+    this.activationType = activationType;
 
     this.weights =
-        DoubleStream.generate(() -> new Random().nextDouble()).limit(numNeuronsIn).toArray();
+        DoubleStream.generate(() -> new Random().nextDouble(-1.0, 1.0))
+            .limit(numNeuronsIn)
+            .toArray();
     this.biases =
         DoubleStream.generate(() -> new Random().nextDouble()).limit(numNeuronsOut).toArray();
+    this.costs = new double[numNeuronsOut];
   }
 
-  public double[] calculateOutputOfEachNeuron(final double[] input) {
+  public double[] calculateOutput(final double[] input) {
     if (numNeuronsIn != input.length) {
       throw new RuntimeException(
           "The number ('%s') of input signals for this layer does NOT match the number ('%s') of Neurons inside this layer."
@@ -42,11 +43,21 @@ public class Layer {
       }
 
       value = value + biases[outIndex];
-      value = activationFunction.apply(value);
+      value = activationType.apply(value);
       result[outIndex] = value;
     }
 
     return result;
+  }
+
+  public double[] calculateCosts(final double[] expectedValues) {
+    if (numNeuronsOut != expectedValues.length) {
+      throw new RuntimeException(
+          "The number ('%s') of expected values for this layer does NOT match the number ('%s') of the output of the Neurons of this layer"
+              .formatted(numNeuronsOut, expectedValues.length));
+    }
+
+    return null;
   }
 
   public void updateBiases() {}
